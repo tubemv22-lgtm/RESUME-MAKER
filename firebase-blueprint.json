@@ -1,0 +1,98 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile information",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name",
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address",
+          "maxLength": 150
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "User profile picture URL",
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Account initialization timestamp"
+        }
+      },
+      "required": ["userId", "displayName", "email", "createdAt"]
+    },
+    "Resume": {
+      "title": "Resume",
+      "description": "Saved resume or biodata document",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "UID of the owner"
+        },
+        "title": {
+          "type": "string",
+          "description": "Name or title of the resume draft",
+          "maxLength": 200
+        },
+        "templateId": {
+          "type": "string",
+          "description": "Selected template identifier",
+          "maxLength": 50
+        },
+        "theme": {
+          "type": "string",
+          "description": "Selected theme key",
+          "maxLength": 50
+        },
+        "photo": {
+          "type": "string",
+          "description": "Profile photo URL or encoded string",
+          "maxLength": 2000000
+        },
+        "docData": {
+          "type": "string",
+          "description": "Serialized resume sections and fields",
+          "maxLength": 500000
+        },
+        "typography": {
+          "type": "string",
+          "description": "Serialized typography and sizing configuration",
+          "maxLength": 10000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last updated timestamp"
+        }
+      },
+      "required": ["userId", "title", "templateId", "theme", "docData", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles containing public display info"
+    },
+    "/users/{userId}/resumes/{resumeId}": {
+      "schema": "Resume",
+      "description": "User's saved biodata/resume documents"
+    }
+  }
+}

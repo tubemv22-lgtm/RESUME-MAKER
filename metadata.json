@@ -1,0 +1,8 @@
+{
+  "name": "Remix HTML Code Advanced Refiner",
+  "description": "Professional Resume, CV & Biodata Maker with real-time 1-page A4 preview, multiple elegant templates, custom typography, AI content enhancement, and high-quality PDF export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
